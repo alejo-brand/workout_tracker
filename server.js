@@ -2,6 +2,7 @@
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
+require("./models");
 const PORT = process.env.PORT || 3000;
 const app = express();
 
