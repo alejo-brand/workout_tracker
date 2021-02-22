@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {Workout} = require("../models/Workout.js")
+const {Workout} = require("../models")
 
 router.get("/api/workouts",(req,res)=>{
   Workout.find().then((workouts)=>{
@@ -14,6 +14,7 @@ router.post("/api/workouts",(req,res)=>{
   Workout.create(req.body).then((workout)=>{
     res.json(workout);
   }).catch((err)=>{
+    console.log(err);
     res.status(500).json(err);
   });
   
