@@ -8,7 +8,7 @@
       default:Date.now()
     },
 
-    excercises:[
+    exercises:[
       {
         name:{
           type:String,
@@ -44,6 +44,15 @@
     ]
  });
  WorkoutSchema.set("toJSON", {virtuals:true});
+ WorkoutSchema.virtual("totalDuration").get(function(){
+  let duration = 0;
+
+  this.exercises.forEach((exercise)=> {
+    duration +=  exercise.duration 
+  });
+  return duration;
+});
+
  
  const Workout = mongoose.model("Workout",WorkoutSchema);
  module.exports = Workout; 
